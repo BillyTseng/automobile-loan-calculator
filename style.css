@@ -2,6 +2,25 @@ span.errorMsg {
   display: none;
 }
 
+.loanCard {
+  display: inline-block;
+  border: 2px solid black;
+}
+
+.close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+}
+
+.close:hover {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    color:#fff;
+}
 /*label {
    display: block;
 }
