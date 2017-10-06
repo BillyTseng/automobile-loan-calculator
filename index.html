@@ -10,31 +10,33 @@
 		<div>
 			<label for="purchasePrice">Purchase Price</label>
 			<input type="text" id="purchasePrice" name="purchasePrice">
-			<span class="errorMsg">Purchase price should be a number and greater than 0 and less than 100000.</span>
 		</div>
 		<p>Financing Offer Details</p>
 		<div class="offerDetails">
 			<div>
 				<label for="cashIncentive">Cash Incentive:</label>
 				<input type="text" id="cashIncentive" name="cashIncentive">
-				<span class="errorMsg">Cash Incentive should be a number.</span>
 			</div>
 			<div>
 				<label for="intRate">Interest Rate:</label>
 				<input type="text" id="intRate" name="intRate">
-				<span class="errorMsg">Interest rate should be a number and greater than 0.0 and less than 10.0</span>
 			</div>
 			<div>
 				<label for="term">Term (months):</label>
 				<input type="text" id="term" name="term">
-				<span class="errorMsg">Term in months should be a number and greater than or equal to 24 and less than or equal to 72</span>
 			</div>
 			<div>
 				<button id="addOption">Add Option</button>
 			</div>
 		</div>
-		<div class="options"></div>
 	</div>
+	<div class="errorMsgContainer">
+		<p class="errorMsg purchasePrice">Purchase price should be a number and greater than 0 and less than 100000.</p>
+		<p class="errorMsg cashIncentive">Cash Incentive should be a number.</p>
+		<p class="errorMsg intRate">Interest rate should be a number and greater than 0.0 and less than 10.0</p>
+		<p class="errorMsg term">Term in months should be a number and greater than or equal to 24 and less than or equal to 72</p>
+	</div>
+	<div class="options"></div>
 </body>
 
 </html>

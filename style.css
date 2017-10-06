@@ -1,32 +1,16 @@
-span.errorMsg {
-  display: none;
+body {
+   font: 10pt Arial;
 }
 
-.loanCard {
-  display: inline-block;
-  border: 2px solid black;
-}
-
-.close {
-    float:right;
-    display:inline-block;
-    padding:2px 5px;
-    background:#ccc;
-}
-
-.close:hover {
-    float:right;
-    display:inline-block;
-    padding:2px 5px;
-    background:#ccc;
-    color:#fff;
-}
-/*label {
-   display: block;
+.loanCalculator {
+   background-color: #eee;
+   padding: 10px;
+   width: 350px;
+   display: inline-block;
 }
 
 input[type=text] {
-   width: 350px;
+   width: 100px;
    padding: 8px;
    margin-top: 4px;
    margin-bottom: 12px;
@@ -51,12 +35,37 @@ button:hover {
    background-color: #07d;
 }
 
-.SavingsCalculator {
-   font: 10pt Arial;
-   background-color: #eee;
-   padding: 10px;
-   width: 350px;
+.errorMsgContainer {
+  display: inline-block;
+  vertical-align: top;
 }
+
+p.errorMsg {
+  display: none;
+  color: red;
+}
+
+.loanCard {
+  display: inline-block;
+  border: 2px solid black;
+}
+
+.close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+}
+
+.close:hover {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    color:#fff;
+}
+/*
+
 
 .SavingsTable {
     font-size: 10pt;

@@ -32,6 +32,9 @@
 function isBadInput(element) {
   var ret = isNaN(element.value);
 
+  if (element.value.trim() === "")
+    ret = true;
+    
   switch(element.id) {
     // 1) Interest rate should be greater than 0.0% and less than 10.0%
     case "intRate":
@@ -58,15 +61,16 @@ function isBadInput(element) {
 
 function validateInput(element) {
   var badInput = isBadInput(element);
+  var errMsgs = document.getElementsByClassName(element.id)[0];
 
   if (badInput) {
     element.style.borderColor = 'red';
     element.style.borderWidth = '2px';
-    element.nextElementSibling.style.display = "inline";
+    errMsgs.style.display = "block";
   } else {
     element.style.borderColor = 'black';
     element.style.borderWidth = '1px';
-    element.nextElementSibling.style.display = "none";
+    errMsgs.style.display = "none";
   }
   return badInput;
 }
@@ -103,6 +107,7 @@ function renderOptions() {
     var termInMonth = optionsArray[i].term;
     var monthPay = calPaymentAmount(i);
     var totalCost = monthPay * termInMonth - optionsArray[i].cashIncentive;
+    console.log(totalCost + ", " + optionsArray[i].cashIncentive);
     monthPay = totalCost / termInMonth;
     htmlStr += '<p>Offer ' + (i+1) + ':</p>';
     htmlStr += '<span class="close">x</span>'
@@ -129,7 +134,7 @@ function optionView() {
   if (badInput) {
      return;
   }
-  
+
   inputObj.purchasePrice = parseFloat(purchasePriceElem.value);
   inputObj.cashIncentive = parseFloat(cashIncentiveElem.value);
   inputObj.intRate = parseFloat(intRateElem.value);
