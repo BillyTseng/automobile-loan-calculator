@@ -1,40 +1,9 @@
-/* function generateTable() {
-    var initBalance = 1000;
-    var numYears = 5;
-    var interestRate = 1.2;
-    var currBalance;
-
-    var initBalanceElement = document.getElementById("initBalance");
-    initBalance = parseFloat(initBalanceElement.value);
-
-    var numYearsElement = document.getElementById("numYears");
-    numYears = parseFloat(numYearsElement.value);
-
-    var interestRateElement = document.getElementById("intRate");
-    interestRate = parseFloat(interestRateElement.value);
-
-    var savingsTableElement = document.getElementById("savingsTable1");
-
-    savingsTableHTML =  '<table>';
-    savingsTableHTML += '<tr><th>Year</th><th>Balance</th></tr>';
-
-    // Use a loop to generate the table rows with data.
-    currBalance = initBalance;
-    for (var i = 0; i < numYears; i++) {
-        currBalance += currBalance * (1.0 * (interestRate / 100.0));
-        savingsTableHTML += '<tr><td>' + (i + 1) + '</td><td>$' + currBalance.toFixed(2) + '</td></tr>';
-    }
-
-    savingsTableHTML += '</table>';
-    savingsTableElement.innerHTML = savingsTableHTML;
-} */
-
 function isBadInput(element) {
   var ret = isNaN(element.value);
 
   if (element.value.trim() === "")
     ret = true;
-    
+
   switch(element.id) {
     // 1) Interest rate should be greater than 0.0% and less than 10.0%
     case "intRate":
@@ -66,7 +35,7 @@ function validateInput(element) {
   if (badInput) {
     element.style.borderColor = 'red';
     element.style.borderWidth = '2px';
-    errMsgs.style.display = "block";
+    errMsgs.style.display = 'block';
   } else {
     element.style.borderColor = 'black';
     element.style.borderWidth = '1px';
@@ -75,9 +44,25 @@ function validateInput(element) {
   return badInput;
 }
 
+function renderErrView() {
+  var errorMsgContainer = document.getElementsByClassName('errorMsgContainer')[0];
+  var badInput = false;
+  for(var i=0; i < inputElements.length; i++) {
+      if (inputElements[i].type == "text") {
+          badInput |= validateInput(inputElements[i]);
+      }
+  }
+  if (badInput) {
+    errorMsgContainer.style.borderColor = 'red';
+  } else {
+    errorMsgContainer.style.borderColor = 'white';
+  }
+  return badInput;
+}
+
 function validateElement(element) {
   return function() {
-    validateInput(element);
+    renderErrView();
   };
 }
 
@@ -109,12 +94,12 @@ function renderOptions() {
     var totalCost = monthPay * termInMonth - optionsArray[i].cashIncentive;
     console.log(totalCost + ", " + optionsArray[i].cashIncentive);
     monthPay = totalCost / termInMonth;
+    htmlStr += '<p class="space">&nbsp<span class="close">x</span></p>';
     htmlStr += '<p>Offer ' + (i+1) + ':</p>';
-    htmlStr += '<span class="close">x</span>'
-    htmlStr += '<p>Interest Rate: ' + optionsArray[i].intRate.toFixed(2) + '%</p>';
-    htmlStr += '<p>Loan Term (months): ' + optionsArray[i].term + '</p>';
-    htmlStr += '<p>Monthly Payment: $' + monthPay.toFixed(2) + '</p>';
-    htmlStr += '<p>Total cost of Ownership: $' + totalCost.toFixed(2) + '</p>';
+    htmlStr += '<span>Interest Rate: <span class="answer">' + optionsArray[i].intRate.toFixed(2) + '%</span></span><br>';
+    htmlStr += '<span>Loan Term (months): <span class="answer">' + optionsArray[i].term + '</span></span><br>';
+    htmlStr += '<span>Monthly Payment: <span class="answer">$' + monthPay.toFixed(2) + '</span></span><br>';
+    htmlStr += '<span>Total cost of Ownership: <span class="answer">$' + totalCost.toFixed(2) + '</span></span><br>';
     loanCardElem.innerHTML = htmlStr;
     optionsElem.appendChild(loanCardElem);
     document.getElementsByClassName('close')[i].addEventListener("click", removeOption(i));
@@ -124,12 +109,12 @@ function renderOptions() {
 function optionView() {
   var inputObj = {};
   var badInput = false;
-  for(var i=0; i < inputElements.length; i++) {
+  /*for(var i=0; i < inputElements.length; i++) {
       if (inputElements[i].type == "text") {
           badInput |= validateInput(inputElements[i]);
       }
-  }
-
+  }*/
+  badInput = renderErrView();
   // If any input element is invalid, return so the table is not udpated.
   if (badInput) {
      return;
@@ -145,10 +130,6 @@ function optionView() {
     optionsArray.shift();
 
   renderOptions();
-  /*  //Debugging
-  for (var i = 0; i < optionsArray.length; i ++) {
-    console.log("optionView: " + Object.values(optionsArray[i]));
-  }*/
 };
 
 var optionsArray = [];

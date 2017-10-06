@@ -3,20 +3,33 @@ body {
 }
 
 .loanCalculator {
-   background-color: #eee;
    padding: 10px;
    width: 350px;
    display: inline-block;
 }
 
 input[type=text] {
-   width: 100px;
-   padding: 8px;
-   margin-top: 4px;
-   margin-bottom: 12px;
-   border: 1px solid #aaa;
-   border-radius: 4px;
-   box-sizing: border-box;
+  text-align:right;
+  background-color: #eee;
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  outline: none;
+  background-color: white;
+  border-bottom: 1px solid #09f;
+}
+
+.offerDetails {
+  border: 1px solid #09f;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 button {
@@ -38,68 +51,65 @@ button:hover {
 .errorMsgContainer {
   display: inline-block;
   vertical-align: top;
+  border: 1px solid white;
+  width: 677px;
+  height: 373px;
+  padding: 20px 20px 18px 18px;
 }
 
 p.errorMsg {
   display: none;
   color: red;
+  position: absolute;
+}
+
+p.cashIncentive {
+  top: 160px;
+}
+
+p.intRate {
+  top: 220px;
+}
+
+p.term {
+  top: 290px;
+}
+
+.answer {
+  float:right;
+}
+
+.optionsContainer {
+  width: 1400px;
+  padding: 10px;
 }
 
 .loanCard {
+  width: 310px;
+  padding: 10px 20px 20px 18px;
   display: inline-block;
-  border: 2px solid black;
+  border: 1px solid #09f;
+  margin-right: 15px;
 }
 
 .close {
+    background-color: #09f;
+    font-size: 12pt;
+    border-radius: 20px;
+    color: white;
     float:right;
     display:inline-block;
-    padding:2px 5px;
-    background:#ccc;
+    padding: 5px 10px 7px 10px;
+    cursor: pointer;
 }
 
 .close:hover {
+    background-color: #07d;
     float:right;
     display:inline-block;
-    padding:2px 5px;
-    background:#ccc;
-    color:#fff;
-}
-/*
-
-
-.SavingsTable {
-    font-size: 10pt;
-    font: sans-serif;
-    font-weight: lighter;
 }
 
-.SavingsTable table {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 2px white solid;
-    width: 100%;
+.space {
+  padding: 0;
+  margin: 0;
 }
-
-.SavingsTable th {
-    background-color: #07d;
-    color: white;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-}
-
-.SavingsTable tr td:first-child {
-    text-align: center;
-}
-
-.SavingsTable td {
-    background-color: rgb(200, 200, 200);
-    padding-bottom: 5px;
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: right;
-    width: 50%;
-}*/
