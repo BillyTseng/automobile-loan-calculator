@@ -88,8 +88,7 @@ function renderOptions() {
     var totalCost = monthPay * termInMonth - optionsArray[i].cashIncentive;
     console.log(totalCost + ", " + optionsArray[i].cashIncentive);
     monthPay = totalCost / termInMonth;
-    htmlStr += '<p class="space">&nbsp<span class="close">x</span></p>';
-    htmlStr += '<p>Offer ' + (i+1) + ':</p>';
+    htmlStr += '<p>Offer ' + (i+1) + ':<span class="close">x</span></p>';
     htmlStr += '<span>Interest Rate: <span class="answer">' + optionsArray[i].intRate.toFixed(2) + '%</span></span><br>';
     htmlStr += '<span>Loan Term (months): <span class="answer">' + optionsArray[i].term + '</span></span><br>';
     htmlStr += '<span>Monthly Payment: <span class="answer">$' + monthPay.toFixed(2) + '</span></span><br>';
