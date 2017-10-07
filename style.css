@@ -51,9 +51,6 @@ button:hover {
 .errorMsgContainer {
   display: inline-block;
   vertical-align: top;
-  border: 1px solid white;
-  width: 677px;
-  height: 373px;
   padding: 20px 20px 18px 18px;
 }
 

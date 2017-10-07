@@ -45,24 +45,18 @@ function validateInput(element) {
 }
 
 function renderErrView() {
-  var errorMsgContainer = document.getElementsByClassName('errorMsgContainer')[0];
   var badInput = false;
   for(var i=0; i < inputElements.length; i++) {
       if (inputElements[i].type == "text") {
           badInput |= validateInput(inputElements[i]);
       }
   }
-  if (badInput) {
-    errorMsgContainer.style.borderColor = 'red';
-  } else {
-    errorMsgContainer.style.borderColor = 'white';
-  }
   return badInput;
 }
 
 function validateElement(element) {
   return function() {
-    renderErrView();
+    validateInput(element);
   };
 }
 
@@ -109,11 +103,7 @@ function renderOptions() {
 function optionView() {
   var inputObj = {};
   var badInput = false;
-  /*for(var i=0; i < inputElements.length; i++) {
-      if (inputElements[i].type == "text") {
-          badInput |= validateInput(inputElements[i]);
-      }
-  }*/
+
   badInput = renderErrView();
   // If any input element is invalid, return so the table is not udpated.
   if (badInput) {
