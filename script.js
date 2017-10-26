@@ -117,7 +117,7 @@ function optionView() {
 
   optionsArray.push(inputObj);
   if (optionsArray.length > 3)
-    optionsArray.shift();
+    return alert("Too many options, please close one offer.");
 
   renderOptions();
 };
