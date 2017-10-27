@@ -110,14 +110,15 @@ function optionView() {
      return;
   }
 
+  // Check is the offer options over three.
+  if (optionsArray.length >= 3)
+    return alert("Too many options, please close one offer.");
+
   inputObj.purchasePrice = parseFloat(purchasePriceElem.value);
   inputObj.cashIncentive = parseFloat(cashIncentiveElem.value);
   inputObj.intRate = parseFloat(intRateElem.value);
   inputObj.term = parseFloat(termElem.value);
-
   optionsArray.push(inputObj);
-  if (optionsArray.length > 3)
-    return alert("Too many options, please close one offer.");
 
   renderOptions();
 };
