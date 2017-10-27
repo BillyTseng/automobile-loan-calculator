@@ -116,6 +116,10 @@ function optionView() {
 
   inputObj.purchasePrice = parseFloat(purchasePriceElem.value);
   inputObj.cashIncentive = parseFloat(cashIncentiveElem.value);
+
+  if (inputObj.cashIncentive >= inputObj.purchasePrice)
+    return alert("Purchase Price should be greater than Cash Incentive!!");
+
   inputObj.intRate = parseFloat(intRateElem.value);
   inputObj.term = parseFloat(termElem.value);
   optionsArray.push(inputObj);
